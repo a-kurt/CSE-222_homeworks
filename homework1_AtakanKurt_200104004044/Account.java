@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Represents a social media account.
  */
@@ -456,6 +458,7 @@ public class Account {
 
     /**
      * Blocks the given account if the user is logged in and the account is not already blocked.
+     * Removes the blocked account from followers and fallowing list.
      *
      * @param account The account to be blocked.
      */
@@ -531,5 +534,20 @@ public class Account {
             }
         }
         return blocked;
+    }
+
+    public String toString() {
+        return "Account{" +
+                "accountId=" + accountId +
+                ", username='" + username + '\'' +
+                ", birthdate='" + birthdate + '\'' +
+                ", location='" + location + '\'' +
+                ", posts=" + Arrays.toString(posts) +
+                ", messages=" + Arrays.toString(messages) +
+                ", following=" + Arrays.toString(following) +
+                ", followers=" + Arrays.toString(followers) +
+                ", logged=" + logged +
+                ", blockedAccounts=" + Arrays.toString(blockedAccounts) +
+                '}';
     }
 }

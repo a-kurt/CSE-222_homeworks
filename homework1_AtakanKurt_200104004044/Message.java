@@ -72,4 +72,13 @@ public class Message {
         System.out.println("To: " + this.receiverId);
         System.out.println("Message: " + this.content);
     }
+
+    public String toString() {
+        return "Message{" +
+                "messageId=" + messageId +
+                ", senderId='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

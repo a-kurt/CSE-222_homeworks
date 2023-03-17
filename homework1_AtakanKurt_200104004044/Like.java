@@ -11,4 +11,5 @@ public class Like extends Interaction {
     public Like(int interactionId, String accountId, int postId) {
         super(interactionId, accountId, postId);
     }
+
 }

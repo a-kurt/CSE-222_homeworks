@@ -123,7 +123,7 @@ public class Scenario2 {
             System.out.println();
 
             System.out.println("\u001B[1ma.\u001B[0m views the profile of “gizemsungu”.");
-            sibelgulmez.viewPost(gizemsungu);
+            sibelgulmez.viewProfile(gizemsungu);
             System.out.println();
 
             System.out.println("\u001B[1mb.\u001B[0m likes Post1.");

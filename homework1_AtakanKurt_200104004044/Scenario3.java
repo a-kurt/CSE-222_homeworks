@@ -123,6 +123,8 @@ public class Scenario3 {
             System.out.println("\u001B[1mb.\u001B[0m tries to send a message to “gizemsungu”.");
             Message message3 = new Message(sibelgulmez.getMessageNumber(), sibelgulmez.getUsername(), gizemsungu.getUsername(), "Please unblock me");
             sibelgulmez.sendMessage(gizemsungu, message3);
+
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

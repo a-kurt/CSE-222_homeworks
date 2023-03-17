@@ -45,4 +45,12 @@ public class Interaction {
     public String getAccountId() {
         return accountId;
     }
+
+    public String toString() {
+        return "Interaction{" +
+                "interactionId=" + interactionId +
+                ", accountId='" + accountId + '\'' +
+                ", postId=" + postId +
+                '}';
+    }
 }

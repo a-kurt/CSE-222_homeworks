@@ -30,4 +30,11 @@ public class Comment extends Interaction {
     public String getContent() {
         return content;
     }
+
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                super.toString() + " "  + this.content ;
+    }
 }

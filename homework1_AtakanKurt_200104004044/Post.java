@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Represents social media post.
  */
@@ -147,5 +149,15 @@ public class Post {
                 System.out.println("Comment " + (i + 1) + ": '" + this.comments[i].getAccountId() + "' said'" + this.comments[i].getContent() + "'");
         } else System.out.println("The post has no comments.");
 
+    }
+
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", accountId='" + accountId + '\'' +
+                ", likes=" + Arrays.toString(likes) +
+                ", comments=" + Arrays.toString(comments) +
+                ", content='" + content + '\'' +
+                '}';
     }
 }
