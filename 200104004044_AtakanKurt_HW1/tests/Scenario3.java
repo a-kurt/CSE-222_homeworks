@@ -6,6 +6,7 @@ import main.message.Message;
 
 public class Scenario3 {
     public static void main(String[] args) {
+                    long startTime = System.nanoTime();
         try {
             System.out.println("\u001B[1mStep 1...\u001B[0m Creating accounts...");
             Account gizemsungu = new Account(1, "gizemsungu", "01.01.1998", "Gebze");
@@ -134,5 +135,8 @@ public class Scenario3 {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        long endTime = System.nanoTime();
+        float totalTime = endTime - startTime;
+        System.out.println(totalTime/1000000000);
     }
 }

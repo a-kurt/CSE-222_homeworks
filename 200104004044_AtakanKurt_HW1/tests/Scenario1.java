@@ -8,6 +8,7 @@ public class Scenario1 {
     public static void main(String[] args) {
         /* Scenario 1 */
         // System.out.println("\u001B[1m\u001B[0m"); to print bold text
+                long startTime = System.nanoTime();
         try {
 
             System.out.println("\u001B[1mStep 1...\u001B[0m Creating accounts...");
@@ -109,5 +110,8 @@ public class Scenario1 {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        long endTime = System.nanoTime();
+        float totalTime = endTime - startTime;
+        System.out.println(totalTime/1000000000);
     }
 }
