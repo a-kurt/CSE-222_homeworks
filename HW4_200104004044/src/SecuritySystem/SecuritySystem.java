@@ -8,13 +8,25 @@ import java.util.Stack;
  * @version 1.0.0
  */
 public class SecuritySystem {
+
+    /**
+     * This method is used to log in the user with the given username and password information.
+     * @param username a string value that represents the user's username
+     * @param password1 a string value that represents the user's first password
+     * @param password2 an integer value that represents the user's second password
+     * @param denominations an array of integer values that represent the denominations used for password2 verification
+     */
     public void login(String username, String password1, int password2, int [] denominations) {
         boolean control1 = this.checkIfValidUsername(username);
         boolean control2 = this.containsUserNameSpirit(username, password1);
         boolean control3 = this.isBalancedPassword(password1);
         boolean control4 = this.isPalindromePossible(password1);
         boolean control5 = this.isExactDivision(password2, denominations);
-
+        if (password2 < 10 || password2 > 10000) {
+            System.out.println("The integer password is invalid due it must be between 10 and 10000. Try again...");
+            return;
+        }
+        if (!control5) System.out.println("The integer password is invalid due to no exact division. Try again...");
         if (control1 && control2 && control3 && control4 && control5) {
             System.out.println("\u001B[32mThe username and passwords are valid. The door is opening, please wait...\u001B[0m");
         }
@@ -28,8 +40,14 @@ public class SecuritySystem {
      */
     public boolean checkIfValidUsername(String username) throws IllegalArgumentException {
         // base case
-        if (username.length() < 1) throw new IllegalArgumentException("The username is invalid. Can not be empty. Try again...");
-        if (!Character.isLetter(username.charAt(0))) throw new IllegalArgumentException("The username is invalid. It must contain only letters. Try again...");
+        if (username.length() < 1) {
+            System.out.println("The username is invalid. Can not be empty. Try again...");
+            return false;
+        }
+        if (!Character.isLetter(username.charAt(0))) {
+            System.out.println("The username is invalid. It must contain only letters. Try again...");
+            return false;
+        }
         if (username.length() == 1) {
             return true;
         }
@@ -47,12 +65,38 @@ public class SecuritySystem {
      * @throws IllegalArgumentException if either the username or the password is null or empty, or it is not contains at least one letter from username.
      */
     public boolean containsUserNameSpirit(String username, String password1) throws IllegalArgumentException {
-        if (username == null || username.isEmpty()) throw new IllegalArgumentException("The username is invalid. It can't be empty or null. Try again...");
-        if (password1 == null || password1.isEmpty()) throw new IllegalArgumentException("The string password is invalid. It cannot be empty or null. Try again...");
+        if (username == null || username.isEmpty()) {
+            System.out.println("The username is invalid. It can't be empty or null. Try again...");
+            return false;
+        }
+        if (password1 == null || password1.isEmpty()) {
+            System.out.println("The string password is invalid. It cannot be empty or null. Try again...");
+            return false;
+        }
 
         Stack<Character> letters = new Stack<>();
-        for (int i = 0; i < password1.length(); i++)
-            letters.push(password1.charAt(i));
+//        for (int i = 0; i < password1.length(); i++)
+//            letters.push(password1.charAt(i));
+        int bracketCount = 0;
+        for (int i = 0; i < password1.length(); i++) {
+            Character letter = password1.charAt(i);
+            if (letter == '{' || letter == '}' || letter == '(' || letter == ')' || letter == '[' || letter == ']') {
+                bracketCount++;
+                letters.push(letter);
+            }
+            else if (!Character.isLetter(letter)) {
+                System.out.println("The string password is invalid. It has non letter character in it. Try again...");
+                return false;
+            } else letters.push(letter);
+        }
+        if (bracketCount < 2) {
+            System.out.println("The string password is invalid. Must contain at least 2 brackets. Try again...");
+            return false;
+        }
+        if (password1.length() < 8) {
+            System.out.println("The string password is invalid. Minimum length is 8. Try again...");
+            return false;
+        }
 
         while (!letters.isEmpty()) {
             Character letter = letters.pop();
@@ -62,7 +106,8 @@ public class SecuritySystem {
                 return true;
             }
         }
-        throw new IllegalArgumentException("The string password is invalid. It is not contains at least one letter of the username. Try again...");
+        System.out.println("The string password is invalid. It is not contains at least one letter of the username. Try again...");
+        return false;
     }
 
     /**
@@ -72,7 +117,10 @@ public class SecuritySystem {
      * @throws IllegalArgumentException if the password is null or empty or has unbalanced brackets.
      */
     public boolean isBalancedPassword(String password1) throws IllegalArgumentException {
-        if (password1 == null || password1.isEmpty()) throw new IllegalArgumentException("The string password is invalid. It cannot be empty or null. Try again...");
+        if (password1 == null || password1.isEmpty()) {
+            System.out.println("The string password is invalid. It cannot be empty or null. Try again...");
+            return false;
+        }
         Stack<Character> openBrackets = new Stack<>();
 
         for (int i = 0; i < password1.length(); i++) {
@@ -80,16 +128,25 @@ public class SecuritySystem {
             if (character == '{' || character == '[' || character == '(') {
                 openBrackets.push(character);
             } else if (character == '}' || character == ']' || character == ')') {
-                if (openBrackets.isEmpty()) throw new IllegalArgumentException("The string password is invalid due to invalid brackets. Try again...");
+                if (openBrackets.isEmpty()) {
+                    System.out.println("The string password is invalid due to invalid brackets. Try again...");
+                    return false;
+                }
                 if (character == '}' && '{' == openBrackets.pop()) continue;
                 else if (character == ')' && '(' == openBrackets.pop()) continue;
                 else if (character == ']' && '[' == openBrackets.pop()) continue;
-                else throw new IllegalArgumentException("The string password is invalid due to invalid brackets. Try again...");
+                else {
+                    System.out.println("The string password is invalid due to invalid brackets. Try again...");
+                    return false;
+                }
             }
         }
         if (openBrackets.isEmpty()) {
             return true;
-        } else throw new IllegalArgumentException("The string password is invalid due to invalid brackets. Try again...");
+        } else {
+            System.out.println("The string password is invalid due to invalid brackets. Try again...");
+            return false;
+        }
     }
 
     /**
@@ -99,7 +156,6 @@ public class SecuritySystem {
      * @throws IllegalArgumentException if the password is null or empty or no palindrome can be created.
      */
     public boolean isPalindromePossible(String password1) throws IllegalArgumentException { // TODO: Test this functions.
-        if (password1 == null || password1.isEmpty()) throw new IllegalArgumentException("The string password is invalid. It cannot be empty or null. Try again...");
         String newPassword1 = password1.replaceAll("[\\[\\](){}]","");
         if (newPassword1.length() <= 1) {
             return true;
@@ -119,7 +175,8 @@ public class SecuritySystem {
             String newStr = newPassword1.replaceAll(Character.toString(secondLetter), "");
             return isPalindromePossible(newStr);
         } else {
-            throw new IllegalArgumentException("The string password is invalid. No palindrome. Try again...");
+            System.out.println("The string password is invalid. No palindrome. Try again...");
+            return false;
         }
     }
 
@@ -140,7 +197,6 @@ public class SecuritySystem {
         }
         for (int i = 0; i < psbArr.length; i++) {
             if (isExactDivision(psbArr[i], denominations)) {
-                System.out.println(psbArr[i]);
                 return true;
             }
         }
