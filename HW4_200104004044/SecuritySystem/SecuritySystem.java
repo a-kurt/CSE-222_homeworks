@@ -36,9 +36,8 @@ public class SecuritySystem {
      * Checks if the given username is valid.
      * @param username the username to be checked
      * @return true if the username is valid, false otherwise
-     * @throws IllegalArgumentException if the username is empty or contains non-letter characters
      */
-    public boolean checkIfValidUsername(String username) throws IllegalArgumentException {
+    public boolean checkIfValidUsername(String username) {
         // base case
         if (username.length() < 1) {
             System.out.println("The username is invalid. Can not be empty. Try again...");
@@ -62,9 +61,8 @@ public class SecuritySystem {
      * @param username the username to be checked
      * @param password1 the password to be checked
      * @return true if the password contains at least one letter from the username, false otherwise
-     * @throws IllegalArgumentException if either the username or the password is null or empty, or it is not contains at least one letter from username.
      */
-    public boolean containsUserNameSpirit(String username, String password1) throws IllegalArgumentException {
+    public boolean containsUserNameSpirit(String username, String password1) {
         if (username == null || username.isEmpty()) {
             System.out.println("The username is invalid. It can't be empty or null. Try again...");
             return false;
@@ -75,9 +73,8 @@ public class SecuritySystem {
         }
 
         Stack<Character> letters = new Stack<>();
-//        for (int i = 0; i < password1.length(); i++)
-//            letters.push(password1.charAt(i));
         int bracketCount = 0;
+
         for (int i = 0; i < password1.length(); i++) {
             Character letter = password1.charAt(i);
             if (letter == '{' || letter == '}' || letter == '(' || letter == ')' || letter == '[' || letter == ']') {
@@ -114,9 +111,8 @@ public class SecuritySystem {
      * Checks if the given password has balanced brackets.
      * @param password1 the password to be checked.
      * @return true if the password has balanced brackets, false otherwise.
-     * @throws IllegalArgumentException if the password is null or empty or has unbalanced brackets.
      */
-    public boolean isBalancedPassword(String password1) throws IllegalArgumentException {
+    public boolean isBalancedPassword(String password1) {
         if (password1 == null || password1.isEmpty()) {
             System.out.println("The string password is invalid. It cannot be empty or null. Try again...");
             return false;
@@ -153,9 +149,8 @@ public class SecuritySystem {
      * Checks if a palindrome can be created from the given password.
      * @param password1 the password to be checked.
      * @return true if a palindrome can be created, false otherwise.
-     * @throws IllegalArgumentException if the password is null or empty or no palindrome can be created.
      */
-    public boolean isPalindromePossible(String password1) throws IllegalArgumentException { // TODO: Test this functions.
+    public boolean isPalindromePossible(String password1) {
         String newPassword1 = password1.replaceAll("[\\[\\](){}]","");
         if (newPassword1.length() <= 1) {
             return true;
@@ -185,9 +180,8 @@ public class SecuritySystem {
      * @param password2 the integer password to be checked for exact division.
      * @param denominations an array of denominations to be used for exact division.
      * @return true if the integer can be exactly divided by a combination of denominations, false otherwise.
-     * @throws IllegalArgumentException if the integer password is negative or cannot be exactly divided by any combination of denominations.
      */
-    public boolean isExactDivision(int password2, int [] denominations) throws IllegalArgumentException {
+    public boolean isExactDivision(int password2, int [] denominations) {
         if (password2 < 0) return false;
         if (password2 == 0) return true;
         int[] psbArr = new int[denominations.length];
