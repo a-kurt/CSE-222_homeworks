@@ -1,0 +1,30 @@
+-----System Requirements-----
+	-Ubuntu 12.04 and upper versions, windows.
+	-Min OpenJDK 11
+	-the minimum memory requirement 512MB
+	-min processor speed 1GHz
+	-min disk space: 551,4 kB
+	-no network required.
+
+
+------Read Me------
+To run test cases:
+	- open terminal bash in the root directory
+	- type 'make scenario1' to test Scenario 1.
+	- type 'make scenario2' to test Scenario 2.
+	- type 'make scenario3' to test Scenario 3.
+	
+	- type 'make clean' to clean *.class files.
+
+
+
+-----Problem solutions approach:------
+	First I looked at the ER diagram and writed the classes.
+	Then using the scenario outputs I implemented required methods.
+	After testing the classes I writed comments and done the error handling.
+	Then I edited the packages and file order.
+	I used https://app.creately.com/ to draw use case diagram. 
+
+
+Author: Atakan Kurt
+	200104004044

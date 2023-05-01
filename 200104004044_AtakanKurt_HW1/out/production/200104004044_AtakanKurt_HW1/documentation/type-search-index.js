@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"main.account","l":"Account"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"main.interaction","l":"Comment"},{"p":"main.interaction","l":"Interaction"},{"p":"main.interaction","l":"Like"},{"p":"main.message","l":"Message"},{"p":"main.post","l":"Post"}];updateSearchResults();
