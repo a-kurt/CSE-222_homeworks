@@ -28,7 +28,12 @@ public class MergeSort {
      * Sorts the original map using the merge sort algorithm.
      */
     public void mergeSort() {
+        long startTime = System.nanoTime();
         LinkedHashMap<String, Info> sortedMap = this.sort(this.originalMap.getMap());
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime) / 1000;
+        System.out.println("Merge Sort: Input: " + this.originalMap.getStr() + ", Execution Time: " + executionTime);
+
         this.sortedMap.setMap(sortedMap);
     }
 

@@ -32,7 +32,12 @@ public class QuickSort {
         if (keysList.length == 0) {
             throw new IllegalArgumentException("Invalid string.");
         }
+        long startTime = System.nanoTime();
         this.sort(keysList, 0, keysList.length-1);
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime) / 1000;
+        System.out.println("Quick Sort: Input: " + this.originalMap.getStr() + ", Execution Time: " + executionTime);
+
         this.setSortedMap(keysList);
     }
 

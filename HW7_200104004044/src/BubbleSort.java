@@ -32,6 +32,8 @@ public class BubbleSort {
         Set<String> mapKeys = this.originalMap.getMap().keySet();
         String[] keysList = mapKeys.toArray(new String[mapKeys.size()]);
 
+        long startTime = System.nanoTime();
+
         for (int i = 0; i < keysList.length; i++) {
             int currKeyIndex = 0;
             Info currInfo = this.originalMap.getMap().get(keysList[currKeyIndex]);
@@ -46,6 +48,10 @@ public class BubbleSort {
                 }
             }
         }
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime) / 1000;
+        System.out.println("Bubble Sort: Input: " + this.originalMap.getStr() + ", Execution Time: " + executionTime);
+
 
         this.setSortedMap(keysList);
     }

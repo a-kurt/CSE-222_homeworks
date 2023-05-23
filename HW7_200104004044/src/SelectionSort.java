@@ -33,6 +33,7 @@ public class SelectionSort {
         String[] keysList = mapKeys.toArray(new String[mapKeys.size()]);
         int minKeyIndex;
 
+        long startTime = System.nanoTime();
         for (int i = 0; i < keysList.length; i++) {
             minKeyIndex = i;
             Info minKeyInfo = originalMap.getMap().get(keysList[minKeyIndex]);
@@ -63,6 +64,9 @@ public class SelectionSort {
 
             swap(keysList, i, minKeyIndex);
         }
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime) / 1000;
+        System.out.println("Selection Sort: Input: " + this.originalMap.getStr() + ", Execution Time: " + executionTime);
 
         this.setSortedMap(keysList);
     }

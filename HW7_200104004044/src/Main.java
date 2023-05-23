@@ -4,29 +4,29 @@
  */
 public class Main {
     public static void main(String[] args) {
-        String orderedCase = "abbcccdd ddeeeee";
-        String randomCase = "bcdeedcd cebadee";
-        String reverseOrderedCase = "eeeeedd ddcccbba";
+        String orderedCase = "abbcccddddeeeee";
+        String randomCase = "bcdeedcdcebadee";
+        String reverseOrderedCase = "eeeeeddddcccbba";
 
-        testMergeSort(orderedCase);
-        testMergeSort(randomCase);
-        testMergeSort(reverseOrderedCase);
-
-        testSelectionSort(orderedCase);
-        testSelectionSort(randomCase);
-        testSelectionSort(reverseOrderedCase);
-
-        testInsertionSort(orderedCase);
-        testInsertionSort(randomCase);
-        testInsertionSort(reverseOrderedCase);
-
-        testBubbleSort(orderedCase);
-        testBubbleSort(randomCase);
-        testBubbleSort(reverseOrderedCase);
-
-        testQuickSort(orderedCase);
-        testQuickSort(randomCase);
-        testQuickSort(reverseOrderedCase);
+//        testMergeSort(orderedCase);
+//        testMergeSort(randomCase);
+//        testMergeSort(reverseOrderedCase);
+//
+//        testSelectionSort(orderedCase);
+//        testSelectionSort(randomCase);
+//        testSelectionSort(reverseOrderedCase);
+//
+//        testInsertionSort(orderedCase);
+//        testInsertionSort(randomCase);
+//        testInsertionSort(reverseOrderedCase);
+//
+//        testBubbleSort(orderedCase);
+//        testBubbleSort(randomCase);
+//        testBubbleSort(reverseOrderedCase);
+//
+//        testQuickSort(orderedCase);
+//        testQuickSort(randomCase);
+//        testQuickSort(reverseOrderedCase);
     }
 
     public static void testMergeSort(String str) {

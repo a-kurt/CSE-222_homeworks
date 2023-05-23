@@ -32,6 +32,7 @@ public class InsertionSort {
         Set<String> mapKeys = this.originalMap.getMap().keySet();
         String[] keysList = mapKeys.toArray(new String[mapKeys.size()]);
 
+        long startTime = System.nanoTime();
         for (int i = 0; i < keysList.length; i++) {
             for (int j = i; j >= 1; j--) {
                 Info currInfo = this.originalMap.getMap().get(keysList[j]);
@@ -41,6 +42,10 @@ public class InsertionSort {
                 }
             }
         }
+
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime) / 1000;
+        System.out.println("Insertion Sort: Input: " + this.originalMap.getStr() + ", Execution Time: " + executionTime);
 
         this.setSortedMap(keysList);
     }
