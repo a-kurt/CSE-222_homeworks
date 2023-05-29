@@ -1,22 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CSE222Map {
-    public static void main(String[] args) {
-        CSE222Map m = new CSE222Map("/home/atakan/Desktop/CSE-222_homeworks/HW8_200104004044/src/test.txt");
-        int[][] c = m.getMap();
-        System.out.println(m.getStart().toString());
-        System.out.println(m.getEnd().toString());
-        for (int i = 0; i < c.length; i++) {
-            for (int j = 0; j < c[0].length; j++)
-                System.out.print(c[i][j]);
-            System.out.println();
-        }
-
-    }
     private int[][] map;
     private Coordinate start;
     private Coordinate end;
@@ -28,7 +19,7 @@ public class CSE222Map {
     }
     private void readMapFromFile() {
         try {
-            File myFile = new File(fileName);
+            File myFile = new File("./TextFiles/" + fileName);
             Scanner myReader = new Scanner(myFile);
             List<int[]> lines = new ArrayList<>();
             int lineCount = 0;
@@ -67,6 +58,24 @@ public class CSE222Map {
             e.printStackTrace();
         }
     }
+
+    public void writePath(List<Coordinate> path) {
+        try {
+            String[] mt = this.fileName.split("\\.");
+            FileWriter myWriter = new FileWriter("./Paths/" + mt[0] + "_path.txt");
+
+            for (Coordinate coordinate : path) {
+                myWriter.write(coordinate.getY() + "," + coordinate.getX() + System.lineSeparator());
+            }
+
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+    }
+
 
     public int[][] getMap() {
         return map;
