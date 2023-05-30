@@ -3,20 +3,34 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-
+/**
+ * CSE222Graph represents a graph structure generated from a CSE222Map.
+ * It stores the connections between coordinates which is empty spaces in the map.
+ */
 public class CSE222Graph {
 
     private Map<Coordinate, List<Coordinate>> graph;
 
     private CSE222Map map;
 
+    /**
+     * Constructs a CSE222Graph object based on the provided CSE222Map.
+     * @param map the CSE222Map object representing the map
+     * @throws NullPointerException if the map is null.
+     */
     public CSE222Graph(CSE222Map map) {
+        if (map == null) {
+            throw new NullPointerException("Map can't be null");
+        }
         this.map = map;
         this.graph = new HashMap<>();
 
         this.fillGraph();
     }
 
+    /**
+     * Fills the graph with the connections between coordinates representing empty spaces in the map.
+     */
     private void fillGraph() {
         int[][] field = this.map.getMap();
 
@@ -60,14 +74,26 @@ public class CSE222Graph {
         }
     }
 
+    /**
+     * Returns the CSE222Map object.
+     * @return the CSE222Map object
+     */
     public CSE222Map getMap() {
         return map;
     }
 
+    /**
+     * Returns the graph.
+     * @return the graph.
+     */
     public Map<Coordinate, List<Coordinate>> getGraph() {
         return graph;
     }
 
+    /**
+     * Returns a string representation of the CSE222Graph
+     * @return a string representation of the object
+     */
     public String toString() {
         final StringBuilder sb = new StringBuilder("CSE222Graph{");
         sb.append("graph=").append(graph);

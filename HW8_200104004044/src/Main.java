@@ -1,27 +1,22 @@
-import java.util.List;
+
 
 public class Main {
-    public static void main(String[] args) {
-        //testDijkstra("vatican.txt");
-        testBFS("vatican.txt");
-    }
-
-    public static void testDijkstra(String fileName) {
-        CSE222Map m = new CSE222Map(fileName);
-        CSE222Graph g = new CSE222Graph(m);
-        CSE222Dijkstra dijkstra = new CSE222Dijkstra(g);
-        List<Coordinate> path = dijkstra.findPath();
-        PNGGenerator pngGenerator = new PNGGenerator(m.getMap(), path);
-        pngGenerator.convertPNG();
-    }
-
-    public static void testBFS(String fileName) {
-        CSE222Map m = new CSE222Map(fileName);
-        CSE222Graph g = new CSE222Graph(m);
-        CSE222BFS bfs = new CSE222BFS(g);
-        List<Coordinate> path = bfs.findPath();
-        PNGGenerator pngGenerator = new PNGGenerator(m.getMap(), path);
-        pngGenerator.convertPNG();
-        m.writePath(path);
-    }
+    public static void main(String args[]){
+        //  public TestCases(String FileName, int X_SIZE, int Y_SIZE) 
+        new Thread(new TestCases("map01.txt", 500, 500)).start();
+        new Thread(new TestCases("map02.txt", 500, 500)).start();
+		new Thread(new TestCases("map03.txt", 500, 500)).start();
+		new Thread(new TestCases("map04.txt", 500, 500)).start();
+		new Thread(new TestCases("map05.txt", 500, 500)).start();
+		new Thread(new TestCases("map06.txt", 500, 500)).start();
+		new Thread(new TestCases("map07.txt", 500, 500)).start();
+		new Thread(new TestCases("map08.txt", 500, 500)).start();
+		new Thread(new TestCases("map09.txt", 500, 500)).start();
+		new Thread(new TestCases("map10.txt", 500, 500)).start();
+		new Thread(new TestCases("pisa.txt", 0, 0)).start();
+		new Thread(new TestCases("tokyo.txt", 0, 0)).start();
+		new Thread(new TestCases("triumph.txt", 0, 0)).start();
+		new Thread(new TestCases("vatican.txt", 0, 0)).start();
+	}
 }
+
