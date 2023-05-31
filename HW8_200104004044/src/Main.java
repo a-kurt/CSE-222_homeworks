@@ -2,7 +2,7 @@
 
 public class Main {
     public static void main(String args[]){
-        //  public TestCases(String FileName, int X_SIZE, int Y_SIZE) 
+        //  public TestCases(String FileName, int X_SIZE, int Y_SIZE)
         new Thread(new TestCases("map01.txt", 500, 500)).start();
         new Thread(new TestCases("map02.txt", 500, 500)).start();
 		new Thread(new TestCases("map03.txt", 500, 500)).start();

@@ -25,8 +25,17 @@ public class TestCases implements Runnable {
         CSE222Dijkstra dijkstra = new CSE222Dijkstra(g);
         CSE222BFS bfs = new CSE222BFS(g);
 
+        long startTime = System.nanoTime();
         List<Coordinate> dijkstraPath = dijkstra.findPath();
+        long endTime = System.nanoTime();
+        long runningTime = (endTime - startTime) / 1000000;
+        System.out.println("Running time dijkstra: " + runningTime + " ms");
+
+        startTime = System.nanoTime();
         List<Coordinate> bfsPath = bfs.findPath();
+        endTime = System.nanoTime();
+        runningTime = (endTime - startTime) / 1000000;
+        System.out.println("Running time bfs: " + runningTime + " ms");
 
         m.convertPNG(dijkstraPath, "dijkstra");
         m.convertPNG(bfsPath, "bfs");
